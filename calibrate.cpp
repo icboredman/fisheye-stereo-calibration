@@ -27,6 +27,11 @@ void load_image_points(int board_width, int board_height, float square_size, int
     sprintf(right_img, "%s%s%d.jpg", img_dir, rightimg_filename, i);
     img1 = imread(left_img, CV_LOAD_IMAGE_COLOR);
     img2 = imread(right_img, CV_LOAD_IMAGE_COLOR);
+    if (0 == img1.data || 0 == img2.data)
+    {
+      cout << i << ". - file not found" << endl;
+      continue;
+    }
     cv::cvtColor(img1, gray1, CV_BGR2GRAY);
     cv::cvtColor(img2, gray2, CV_BGR2GRAY);
 
